@@ -12,7 +12,7 @@ const server = { // 开发服务器配置
         '/api': {
             changeOrigin: true,
             pathRewrite: { '^/api': '/api' },
-            target: 'http://zccx.qdmqfw.com'
+            target: 'http://www.baidu.com'
         }
     }
 };

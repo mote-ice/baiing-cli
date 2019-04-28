@@ -1,0 +1,25 @@
+$info-color:#74b9ff;
+$error-color:#ff7675;
+$success-color:#55efc4;
+$warning-color:#ffeaa7;
+$primary-color:#dfe6e9;
+
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: $primary-color;
+        * {
+            text-align: center;
+            box-sizing: border-box;
+            transition: all .4s ease;
+        }
+    }
+}

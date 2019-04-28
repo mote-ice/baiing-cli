@@ -1,0 +1,50 @@
+@import '~assets/styles/_global.scss';
+
+header,
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+header {
+    top: 0;
+    width: 100%;
+    height: auto;
+    h3 {
+        margin: 0;
+        line-height: 40px;
+        text-align: center;
+    }
+}
+main {
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    .content-box {
+        display: block;
+        margin: 30px;
+        .rotate {
+            width: 100px;
+            animation: rotating 1.4s linear 0s infinite normal;
+        }
+        @keyframes rotating {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+footer {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    p {
+        margin: 0;
+        line-height: 30px;
+        text-align: center;
+    }
+}

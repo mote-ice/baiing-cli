@@ -1,7 +1,9 @@
 import './style.scss';
+import 'jquery.cookie';
 
 import tool from 'assets/tools/test';
 
+$.cookie('name', 'userName');
 console.dir(tool);
 
 document.getElementById('btn').onclick = function() {

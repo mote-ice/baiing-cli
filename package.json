@@ -53,6 +53,7 @@
         "ios > 7"
     ],
     "devDependencies": {
-        "jquery": "^3.4.0"
+        "jquery": "^3.4.0",
+        "jquery.cookie": "^1.4.1"
     }
 }

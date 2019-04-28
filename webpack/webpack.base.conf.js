@@ -37,10 +37,6 @@ const htmlFiles = function() {
 };
 
 module.exports = {
-    // entry: { // 入口配置
-    //     home: path.resolve(__dirname, '../src/Views/home/index.js'),
-    //     index: path.resolve(__dirname, '../src/Views/index/index.js'),
-    // },
     entry: mainFiles(),
     performance: false, // 禁止提示性能上的一些问题
     resolve: { // 代码模块路径解析的配置

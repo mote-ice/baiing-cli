@@ -2,7 +2,6 @@ const glob = require('glob');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mainFiles = function() {
@@ -41,13 +40,15 @@ module.exports = {
     performance: false, // 禁止提示性能上的一些问题
     resolve: { // 代码模块路径解析的配置
         modules: [ // 构建依赖查找路径
-            path.resolve(__dirname, '../node_modules'),
-            path.resolve(__dirname, '../src/assets')
+            path.resolve(__dirname, '../frameUI'),
+            path.resolve(__dirname, '../node_modules')
         ],
         extensions: ['.js', '.json', '.html', '.scss', '.less', '.css'], // 匹配后缀的优先级
         alias: { // 配置路径别名
-            public: path.resolve(__dirname, '../public'),
-            assets: path.resolve(__dirname, '../src/assets')
+            model: path.resolve(__dirname, '../src/Model'),
+            assets: path.resolve(__dirname, '../src/assets'),
+            frameUI: path.resolve(__dirname, '../frameUI'),
+            viewmodel: path.resolve(__dirname, '../src/ViewModel'),
         },
         mainFiles: ['index', 'main'] // 启动入口文件名
     },
@@ -118,31 +119,26 @@ module.exports = {
                 test: /\.html$/,
                 use: [{
                     loader: 'html-loader',
-                    options: {
-                        minimize: true
-                    }
+                    options: { minimize: true }
                 }],
             }, {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: path.resolve(__dirname, 'images/[name].[hash:7].[ext]')
-                }
+                test: /\.(png|jpe?g|gif|svg|icon)(\?.*)?$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: { limit: 10000, name: 'images/[name].[contenthash:4].[ext]' }
+                }]
             }, {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: path.resolve(__dirname, 'media/[name].[hash:7].[ext]')
-                }
+                use: [{
+                    loader: 'url-loader',
+                    options: { limit: 10000, name: 'medias/[name].[contenthash:4].[ext]' }
+                }]
             }, {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 10000,
-                    name: path.resolve(__dirname, 'fonts/[name].[hash:7].[ext]')
-                }
+                use: [{
+                    loader: 'url-loader',
+                    options: { limit: 10000, name: 'fonts/[name].[contenthash:4].[ext]' }
+                }]
             }
         ],
     },
@@ -155,12 +151,6 @@ module.exports = {
         child_process: 'empty'
     },
     plugins: [
-        new CopyWebpackPlugin([ // from 配置来源，to 配置目标路径
-            {
-                from: path.resolve(__dirname, '../public/'),
-                to: path.resolve(__dirname, '../build/public/')
-            }
-        ]),
         new webpack.ProvidePlugin({ // 全局引入jquery
             $: 'jquery',
             jQuery: 'jquery',

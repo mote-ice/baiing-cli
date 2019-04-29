@@ -12,7 +12,7 @@ const server = { // 开发服务器配置
         '/api': {
             changeOrigin: true,
             pathRewrite: { '^/api': '/api' },
-            target: 'http://www.baidu.com'
+            target: 'http://zccx.qdmqfw.com'
         }
     }
 };
@@ -51,8 +51,13 @@ const devConfig = {
         host: '0.0.0.0',
         quiet: true, // 清空控制台输出
         inline: true, // 浏览器刷新
+        noInfo: true, // 隐藏输出
+        overlay: { // 错误以及警告全屏覆盖
+            errors: true,
+            warnings: true
+        },
         historyApiFallback: true,
-        contentBase: path.join(__dirname, '../build/'), // 配置开发服务运行时的文件根目录
+        contentBase: path.join(__dirname, '../frameUI'), // 配置开发服务运行时的文件根目录
         watchOptions: { poll: 1000, aggregateTimeout: 500, ignored: /node_modules/ }
     }
 }

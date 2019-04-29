@@ -1,8 +1,33 @@
-$info-color:#74b9ff;
+$font-size: 14px;
+$font-size-l: 20px;
+$font-size-s: 16px;
+$font-size-xs: 12px;
+
+$distance: 6px;
+$distance-l:10px;
+$distance-x: 2px;
+
+$box-distance: 6px 14px;
+$box-distance-l: 10px 16px;
+$box-distance-x: 2px 10px;
+
+$info-color:#15b9ff;
 $error-color:#ff7675;
 $success-color:#55efc4;
-$warning-color:#ffeaa7;
-$primary-color:#dfe6e9;
+$warning-color:#ffc20d;
+$default-color:#f3f1f1;
+
+$info-text-color:#15b9ff;
+$error-text-color:#ff7675;
+$success-text-color:#55efc4;
+$warning-text-color:#ffc20d;
+$title-text-color:#333333;
+$subtitle-text-color:#999999;
+$description-text-color:#d3d3d3;
+
+@function box-shadow($color) {
+    @return 0 0 12px $color;
+}
 
 
 html {
@@ -15,11 +40,76 @@ html {
         height: 100%;
         margin: 0;
         padding: 0;
-        background-color: $primary-color;
+        background-color: $default-color;
         * {
             text-align: center;
             box-sizing: border-box;
             transition: all .4s ease;
+        }
+        button {
+            outline: none;
+            padding: $box-distance;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #fff;
+            background-color: #fff;
+            box-shadow: box-shadow(rgba(0, 0, 0, .18));
+        }
+        .button-info {
+            color: #fff;
+            border: 1px solid $info-color;
+            background-color: $info-color;
+            box-shadow: box-shadow($info-color);
+        }
+        .button-error {
+            color: #fff;
+            border: 1px solid $error-color;
+            background-color: $error-color;
+            box-shadow: box-shadow($error-color);
+        }
+        .button-success {
+            color: #fff;
+            border: 1px solid $success-color;
+            background-color: $success-color;
+            box-shadow: box-shadow($success-color);
+        }
+        .button-warning {
+            color: #fff;
+            border: 1px solid $warning-color;
+            background-color: $warning-color;
+            box-shadow: box-shadow($warning-color);
+        }
+        .loading-container {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: 8px;
+            background-color: rgba(0, 0, 0, .2);
+            .rotate {
+                height: 100%;
+                max-width: 60px;
+                max-height: 60px;
+                min-height: 30px;
+                text-align: center;
+                animation: rotating 1.4s linear 0s infinite normal;
+            }
+            @keyframes rotating {
+                from {
+                    transform: rotate(0deg) scale3d(1, 1, 1);
+                }
+                50% {
+                    transform: rotate(180deg) scale3d(.72, .72, .72);
+                }
+                to {
+                    transform: rotate(360deg) scale3d(1, 1, 1);
+                }
+            }
         }
     }
 }

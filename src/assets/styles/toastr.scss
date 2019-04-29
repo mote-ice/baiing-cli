@@ -1,0 +1,30 @@
+@import './_global.scss';
+@import 'toastr/toastr.scss';
+
+.toast-close-button {
+    box-shadow: none;
+}
+
+#toast-container>div {
+    box-shadow: box-shadow(#999999);
+}
+
+#toast-container>div:hover {
+    box-shadow: box-shadow(#999999);
+}
+
+.toast {
+    background-color: #fff;
+}
+.toast-success {
+    background-color: $success-color;
+}
+.toast-error {
+    background-color: $error-color;
+}
+.toast-info {
+    background-color: $info-color;
+}
+.toast-warning {
+    background-color: $warning-color;
+}

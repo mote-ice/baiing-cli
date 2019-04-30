@@ -29,6 +29,10 @@ $description-text-color:#d3d3d3;
     @return 0 0 12px $color;
 }
 
+@function box-shadow-s($size, $color) {
+    @return 0 0 $size $color;
+}
+
 
 html {
     width: 100%;
@@ -78,7 +82,7 @@ html {
             color: #fff;
             border: 1px solid $warning-color;
             background-color: $warning-color;
-            box-shadow: box-shadow($warning-color);
+            box-shadow: box-shadow($warning-color) !important;
         }
         .loading-container {
             position: absolute;
@@ -90,14 +94,15 @@ html {
             right: 0;
             bottom: 0;
             padding: 8px;
-            background-color: rgba(0, 0, 0, .2);
+            background-color: rgba(0, 0, 0, .1);
+            box-shadow: box-shadow(rgba(0, 0, 0, .18));
             .rotate {
                 height: 100%;
                 max-width: 60px;
                 max-height: 60px;
                 min-height: 30px;
                 text-align: center;
-                animation: rotating 1.4s linear 0s infinite normal;
+                animation: rotating 1s linear 0s infinite normal;
             }
             @keyframes rotating {
                 from {

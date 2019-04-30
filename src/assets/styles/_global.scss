@@ -104,17 +104,18 @@ html {
                 text-align: center;
                 animation: rotating 1s linear 0s infinite normal;
             }
-            @keyframes rotating {
-                from {
-                    transform: rotate(0deg) scale3d(1, 1, 1);
-                }
-                50% {
-                    transform: rotate(180deg) scale3d(.72, .72, .72);
-                }
-                to {
-                    transform: rotate(360deg) scale3d(1, 1, 1);
-                }
-            }
         }
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg) scale3d(1, 1, 1);
+    }
+    50% {
+        transform: rotate(180deg) scale3d(.72, .72, .72);
+    }
+    to {
+        transform: rotate(360deg) scale3d(1, 1, 1);
     }
 }

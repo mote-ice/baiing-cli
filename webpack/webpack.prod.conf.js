@@ -1,7 +1,6 @@
 const glob = require('glob');
 const path = require('path');
 const merge = require('webpack-merge');
-const PurifyCSSPlugin = require('purifycss-webpack');
 const baseConfig = require('./webpack.base.conf.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -19,12 +18,9 @@ const prodConfig = {
         filename: 'views/[name].[contenthash:4].js',
         path: path.resolve(__dirname, '../build'),
     },
-    stats: 'minimal',
+    stats: 'errors-only',
     plugins: [
         new CleanWebpackPlugin(), // 打包前清理旧的编译
-        new PurifyCSSPlugin({ // 路径扫描 nodejs内置 路劲检查
-            paths: glob.sync(path.join(__dirname, '../src/Views/*/*.html'))
-        }),
         new CopyWebpackPlugin([{
             from: path.resolve(__dirname, '../frameUI/'),
             to: path.resolve(__dirname, '../build/'),

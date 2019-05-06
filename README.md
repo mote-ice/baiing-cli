@@ -8,10 +8,12 @@
 
 1. 安装依赖
    
-``` shell
+   ```shell
    npm install 或者 yarn install
-```
-
+   ```
+   
+   
+   
 2. 运行本地环境
 
    ``` shell

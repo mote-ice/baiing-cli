@@ -10,7 +10,7 @@ const INDEXVIEW = {
     },
     init() {
         this.onEvent();
-        // this.created.init();
+        this.created.init();
     },
     created: { // 页面数据获取
         login() {
@@ -34,7 +34,6 @@ const INDEXVIEW = {
     },
     onEvent() { // 页面事件处理
         $(document).on('click', '#btn', function(e) {
-            console.log($(this).find('span').text());
             if ($(this).find('span').text() === '开始加载') {
                 loading.start('.animation-box');
                 loading.start('.animation-button');
@@ -53,15 +52,6 @@ const INDEXVIEW = {
                 $(this).find('span').text('开始加载')
             }
         });
-        // this.data().controlBtn.onclick = (e) => {
-        //     if (e.target.innerText === '点击加载') {
-        //         loading.start('.animation-box');
-        //         loading.start('.animation-button');
-        //     } else {
-        //         loading.stop('.animation-box');
-        //         loading.stop('.animation-button');
-        //     }
-        // }
     },
 };
 

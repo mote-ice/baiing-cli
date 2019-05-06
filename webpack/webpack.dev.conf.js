@@ -46,8 +46,7 @@ const devConfig = {
             }
         }) // 控制台输出
     ],
-    devServer: {
-        ...server,
+    devServer: Object.assign(server, {
         host: '0.0.0.0',
         quiet: true, // 清空控制台输出
         inline: true, // 浏览器刷新
@@ -59,7 +58,7 @@ const devConfig = {
         historyApiFallback: true,
         contentBase: path.join(__dirname, '../frameUI'), // 配置开发服务运行时的文件根目录
         watchOptions: { poll: 1000, aggregateTimeout: 500, ignored: /node_modules/ }
-    }
+    })
 }
 
 

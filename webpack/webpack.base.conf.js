@@ -114,7 +114,7 @@ module.exports = {
                         ]
                     }
                 }, 'sass-loader']
-            },{
+            }, {
                 test: /\.html$/,
                 use: [{
                     loader: 'html-loader',
@@ -163,6 +163,5 @@ module.exports = {
             filename: 'styles/[name].[contenthash:4].css',
             chunkFilename: '[id].[contenthash:4].css'
         }),
-        ...htmlFiles()
-    ]
+    ].concat(htmlFiles())
 }

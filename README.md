@@ -2,16 +2,16 @@
 
 ## 环境依赖
 
-[![Image Node](/Users/mote/WorkSpace/Service/baiing-cli/src/assets/images/nodejs.svg)](http://nodejs.cn)[![Image NPM](/Users/mote/WorkSpace/Service/baiing-cli/src/assets/images/npm.svg)](https://www.npmjs.com)
+[![Image Node](src/assets/images/nodejs.svg)](http://nodejs.cn)[![Image NPM](src/assets/images/npm.svg)](https://www.npmjs.com)
 
 ## 运行步骤
 
 1. 安装依赖
    
 ``` shell
-   npm install 或者 yarn install http://nodejs.cn
-   ```
-   
+   npm install 或者 yarn install
+```
+
 2. 运行本地环境
 
    ``` shell

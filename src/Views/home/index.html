@@ -2,18 +2,19 @@
 <html>
 
 <head>
-    <title>首页</title>
-    <link rel="icon" href="public/favicon.ico">
+    <title>
+        <%=htmlWebpackPlugin.options.title%>
+    </title>
+    <link rel="icon" href="favicon.ico">
 </head>
 
 <body>
-    <header>
-        <h3>This is home view!</h3>
-    </header>
+    <%- require('!!html-loader!../../layout/header.html') %>
     <main></main>
     <footer>
         <p>This is Footer!</p>
     </footer>
+    <%- require('!!html-loader!../../layout/footer.html') %>
 </body>
 
 </html>

@@ -1,24 +1,6 @@
-@import '~assets/styles/_global.scss';
-@import '~assets/styles/toastr.scss';
+@import '~@/assets/styles/_global.scss';
+@import '~@/assets/styles/toastr.scss';
 
-header,
-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-}
-header {
-    top: 0;
-    width: 100%;
-    height: auto;
-    background-color: #fff;
-    box-shadow: box-shadow(rgba(0, 0, 0, .18));
-    .header-title {
-        margin: 0;
-        text-align: center;
-        padding: $box-distance-l;
-    }
-}
 main {
     zoom: 1;
     width: 100%;
@@ -67,17 +49,5 @@ main {
             font-size: $font-size;
             color: $description-text-color;
         }
-    }
-}
-footer {
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    background-color: #fff;
-    box-shadow: box-shadow(rgba(0, 0, 0, .18));
-    p {
-        margin: 0;
-        line-height: 30px;
-        text-align: center;
     }
 }

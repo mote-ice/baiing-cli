@@ -1,4 +1,4 @@
-import loadimg from 'assets/images/Loading.png';
+import loadimg from '@/assets/images/Loading.png';
 
 const loading = {
     element() {

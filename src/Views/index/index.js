@@ -1,6 +1,7 @@
 import './style.scss';
 import 'jquery.cookie';
+import '@/layout/init';
 
-import INDEXVIEW from 'viewmodel/IndexView';
+import INDEXVIEW from '@/view-model/IndexView';
 
 INDEXVIEW.init();

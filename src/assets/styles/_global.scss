@@ -50,6 +50,19 @@ html {
             box-sizing: border-box;
             transition: all .4s ease;
         }
+        a {
+            color: $title-text-color;
+            text-decoration: none;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+            li {
+                display: inline-block;
+            }
+        }
         button {
             outline: none;
             padding: $box-distance;
@@ -59,6 +72,54 @@ html {
             border: 1px solid #fff;
             background-color: #fff;
             box-shadow: box-shadow(rgba(0, 0, 0, .18));
+        }
+        header,
+        footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+        }
+        header {
+            top: 0;
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+            box-shadow: box-shadow(rgba(0, 0, 0, .18));
+            .menu-container {
+                font-size: 16px;
+                padding: $box-distance-l;
+                .menu-item {
+                    padding: 0 $distance-l;
+                }
+                .active {
+                    position: relative;
+                    &::after {
+                        position: absolute;
+                        left: $distance-l;
+                        right: $distance-l;
+                        bottom: -$distance-l;
+                        height: 2px;
+                        background-color: $info-color;
+
+                        content: '';
+                    }
+                    a {
+                        color: $info-color;
+                    }
+                }
+            }
+        }
+        footer {
+            width: 100%;
+            height: auto;
+            bottom: 0;
+            background-color: #fff;
+            box-shadow: box-shadow(rgba(0, 0, 0, .18));
+            p {
+                margin: 0;
+                line-height: 30px;
+                text-align: center;
+            }
         }
         .button-info {
             color: #fff;

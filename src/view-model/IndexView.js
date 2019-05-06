@@ -1,6 +1,6 @@
-import api from 'model/api';
-import message from '../tools/message';
-import loading from '../tools/loading';
+import api from '@/model/api';
+import message from '@/tools/message';
+import loading from '@/tools/loading';
 
 const INDEXVIEW = {
     data() {

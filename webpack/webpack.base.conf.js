@@ -6,11 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mainFiles = function() {
     let result = {};
-    glob.sync(path.resolve(__dirname, '../src/Views/*/')).forEach((item, index) => {
+    glob.sync(path.resolve(__dirname, '../src/views/*/')).forEach((item, index) => {
         // statements
         let muster = item.split('/'),
             name = muster[muster.length - 1];
-        result[name] = path.resolve(__dirname, `../src/Views/${name}/index.js`)
+        result[name] = path.resolve(__dirname, `../src/views/${name}/index.js`)
     });
 
     return result;
@@ -18,17 +18,18 @@ const mainFiles = function() {
 
 const htmlFiles = function() {
     let result = [];
-    glob.sync(path.resolve(__dirname, '../src/Views/*/')).forEach((item, index) => {
+    glob.sync(path.resolve(__dirname, '../src/views/*/')).forEach((item, index) => {
         // statements
         let muster = item.split('/'),
             name = muster[muster.length - 1];
 
         result.push(new HtmlWebpackPlugin({
+            title: '前端工作环境流',
             inject: true,
-            hash: false,
+            hash: true,
             chunks: [name],
             filename: `${name}.html`, // 配置输出文件名和路径
-            template: path.resolve(__dirname, `../src/Views/${name}/index.html`), // 配置文件模板
+            template: `!!ejs-webpack-loader!src/views/${name}/index.html`, // 配置文件模板
         }))
     });
 
@@ -45,10 +46,8 @@ module.exports = {
         ],
         extensions: ['.js', '.json', '.html', '.scss', '.less', '.css'], // 匹配后缀的优先级
         alias: { // 配置路径别名
-            model: path.resolve(__dirname, '../src/Model'),
-            assets: path.resolve(__dirname, '../src/assets'),
-            frameUI: path.resolve(__dirname, '../frameUI'),
-            viewmodel: path.resolve(__dirname, '../src/ViewModel'),
+            '@': path.resolve(__dirname, '../src'),
+            frameUI: path.resolve(__dirname, '../frameUI')
         },
         mainFiles: ['index', 'main'] // 启动入口文件名
     },
@@ -115,12 +114,12 @@ module.exports = {
                         ]
                     }
                 }, 'sass-loader']
-            }, {
+            },{
                 test: /\.html$/,
                 use: [{
                     loader: 'html-loader',
                     options: { minimize: true }
-                }],
+                }]
             }, {
                 test: /\.(png|jpe?g|gif|svg|icon)(\?.*)?$/,
                 use: [{

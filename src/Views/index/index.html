@@ -2,17 +2,17 @@
 <html>
 
 <head>
-    <title>测试</title>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
     <link href="favicon.ico" rel="icon">
 </head>
 
 <body>
-    <header>
-        <h1 class="header-title">This is index view!</h1>
-    </header>
+    <%- require('!!html-loader!../../layout/header.html') %>
     <main>
         <section class="animation-box">
-            <div class="loading-test">Loading</div>
+            <div class="loading-test">区域加载</div>
         </section>
         <button class="button-info animation-button" id="btn">
             <span>开始加载</span>
@@ -25,9 +25,7 @@
             </p>
         </section>
     </main>
-    <footer>
-        <p>This is Footer!</p>
-    </footer>
+    <%- require('!!html-loader!../../layout/footer.html') %>
 </body>
 
 </html>

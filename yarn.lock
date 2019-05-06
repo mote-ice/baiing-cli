@@ -1933,7 +1933,7 @@ core-js-pure@3.0.1:
   resolved "http://registry.npm.taobao.org/core-js-pure/download/core-js-pure-3.0.1.tgz#37358fb0d024e6b86d443d794f4e37e949098cbe"
   integrity sha1-NzWPsNAk5rhtRD15T0436UkJjL4=
 
-core-js@3.0.1:
+core-js@3, core-js@3.0.1:
   version "3.0.1"
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-3.0.1.tgz#1343182634298f7f38622f95e73f54e48ddf4738"
   integrity sha1-E0MYJjQpj384Yi+V5z9U5I3fRzg=

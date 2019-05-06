@@ -55,17 +55,7 @@ module.exports = {
         rules: [{
                 test: /\.js$/,
                 exclude: /node_modules/, //不需要对第三方模块进行转换，耗费性能
-                loader: 'babel-loader',
-                options: {
-                    'plugins': [
-                        ['@babel/plugin-transform-runtime', {
-                            'corejs': 2,
-                            'helpers': true,
-                            'regenerator': true,
-                            'useESModules': false
-                        }]
-                    ]
-                }
+                use: { loader: 'babel-loader' } // 使用 babel-loader
             },
             /**
              * 加载样式CSS文件

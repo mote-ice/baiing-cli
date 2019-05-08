@@ -46,8 +46,7 @@ module.exports = {
         ],
         extensions: ['.js', '.json', '.html', '.scss', '.less', '.css'], // 匹配后缀的优先级
         alias: { // 配置路径别名
-            '@': path.resolve(__dirname, '../src'),
-            frameUI: path.resolve(__dirname, '../frameUI')
+            '@': path.resolve(__dirname, '../src')
         },
         mainFiles: ['index', 'main'] // 启动入口文件名
     },

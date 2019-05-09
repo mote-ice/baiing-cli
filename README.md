@@ -2,7 +2,9 @@
 
 ## 环境依赖
 
-[![Image Node](src/assets/images/nodejs.svg)](http://nodejs.cn)[![Image NPM](src/assets/images/npm.svg)](https://www.npmjs.com)
+[![Image Node](src/assets/images/nodejs.svg)](http://nodejs.cn)
+
+ [![Image NPM](src/assets/images/yarn.svg)]((https://yarn.bootcss.com))或者  [![Image NPM](src/assets/images/npm.svg)](https://www.npmjs.com) 
 
 ## 运行步骤
 

@@ -29,6 +29,44 @@ main {
         padding: $box-distance-l;
         background-color: #fff;
         box-shadow: box-shadow-s(6px, rgba(0, 0, 0, .18));
+        .heart-box {
+            position: relative;
+            display: inline-block;
+            margin-top: $distance-l;
+            margin-left: $distance-l * 2;
+            width: 20px;
+            height: 20px;
+            border-radius: 0;
+            cursor: pointer;
+            background-color: #ff7675;
+            box-shadow: 0 0 10px #ff7675;
+            transform: rotate3d(0, 0, 1, -45deg);
+        }
+        .heart-box:hover {
+            transform: rotate3d(0, 0, 1, -45deg) scale3d(1.2,1.2,1.2);
+        }
+        .heart-box::before {
+            position: absolute;
+            content: '';
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #ff7675;
+            box-shadow: 0 0 6px #ff7675;
+        }
+        .heart-box::after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #ff7675;
+            box-shadow: 0 0 6px #ff7675;
+        }
         p,
         h3 {
             margin: 0;

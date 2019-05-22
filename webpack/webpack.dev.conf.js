@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.base.conf.js');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const server = { // 开发服务器配置
-    port: 4000,
+    port: 10000,
     https: false,
     proxy: { // 配置跨域代理
         '/api': {

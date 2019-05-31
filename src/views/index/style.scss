@@ -11,7 +11,7 @@ main {
         margin: $box-distance;
         padding: $box-distance-l;
         background-color: #fff;
-        box-shadow: box-shadow-s(6px, rgba(0, 0, 0, .18));
+        box-shadow: box-shadow-s(6px, rgba(0, 0, 0, 0.18));
         .loading-test {
             width: 100%;
             height: 200px;
@@ -28,7 +28,7 @@ main {
         margin: $box-distance;
         padding: $box-distance-l;
         background-color: #fff;
-        box-shadow: box-shadow-s(6px, rgba(0, 0, 0, .18));
+        box-shadow: box-shadow-s(6px, rgba(0, 0, 0, 0.18));
         .heart-box {
             position: relative;
             display: inline-block;
@@ -43,7 +43,7 @@ main {
             transform: rotate3d(0, 0, 1, -45deg);
         }
         .heart-box:hover {
-            transform: rotate3d(0, 0, 1, -45deg) scale3d(1.2,1.2,1.2);
+            transform: rotate3d(0, 0, 1, -45deg) scale3d(1.2, 1.2, 1.2);
         }
         .heart-box::before {
             position: absolute;

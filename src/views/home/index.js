@@ -1,6 +1,6 @@
-import './style.scss';
-import '@/layout/init';
+import './style.scss'
+import '@/layout/init'
 
-import HOMEVIEW from '@/view-model/HomeView';
+import HOMEVIEW from '@/view-model/HomeView'
 
-HOMEVIEW.init();
+HOMEVIEW.init()

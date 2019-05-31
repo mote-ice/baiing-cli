@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>
+            <%= htmlWebpackPlugin.options.title %>
+        </title>
+        <link href="favicon.ico" rel="icon" />
+    </head>
 
-<head>
-    <title>
-        <%= htmlWebpackPlugin.options.title %>
-    </title>
-    <link href="favicon.ico" rel="icon">
-</head>
-
-<body>
-    <%- require('!!html-loader!../../layout/header.html') %>
-    <main>
-        <section class="animation-box">
-            <div class="loading-test">区域加载</div>
-        </section>
-        <button class="button-info animation-button" id="btn">
-            <span>开始加载</span>
-        </button>
-        <section class="content-box">
-            <div class="heart-box"></div>
-            <div class="heart-box"></div>
-            <div class="heart-box"></div>
-            <div class="heart-box"></div>
-            <div class="heart-box"></div>
-            <h3 class="content-title">标题</h3>
-            <p class="content-subtitle">副标题</p>
-            <p class="content-description">
-                描述: Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式文件，以及更高效地开发项目。
-            </p>
-        </section>
-    </main>
-    <%- require('!!html-loader!../../layout/footer.html') %>
-</body>
-
+    <body>
+        <%- require('!!html-loader!../../layout/header.html') %>
+        <main>
+            <section class="animation-box">
+                <div class="loading-test">区域加载</div>
+            </section>
+            <button class="button-info animation-button" id="btn">
+                <span>开始加载</span>
+            </button>
+            <section class="content-box">
+                <div class="heart-box"></div>
+                <div class="heart-box"></div>
+                <div class="heart-box"></div>
+                <div class="heart-box"></div>
+                <div class="heart-box"></div>
+                <h3 class="content-title">标题</h3>
+                <p class="content-subtitle">副标题</p>
+                <p class="content-description">
+                    描述: Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested
+                    rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass
+                    以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式文件，以及更高效地开发项目。
+                </p>
+            </section>
+        </main>
+        <%- require('!!html-loader!../../layout/footer.html') %>
+    </body>
 </html>

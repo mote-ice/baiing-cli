@@ -1,15 +1,16 @@
-const glob = require('glob');
-const path = require('path');
-const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.conf.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const glob = require('glob')
+const path = require('path')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.base.conf.js')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 
 const prodConfig = {
     mode: 'production',
     devtool: 'cheap-module-source-map',
-    output: { // 打包项目的输出文件
+    output: {
+        // 打包项目的输出文件
         /**
          * [filename description]
          * 源代码不变,hash值就不会变,解决浏览器缓存问题;
@@ -21,11 +22,13 @@ const prodConfig = {
     stats: 'errors-only',
     plugins: [
         new CleanWebpackPlugin(), // 打包前清理旧的编译
-        new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, '../frameUI/'),
-            to: path.resolve(__dirname, '../build/'),
-            toType: 'dir'
-        }]), // from 配置来源，to 配置目标路径
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../frameUI/'),
+                to: path.resolve(__dirname, '../build/'),
+                toType: 'dir',
+            },
+        ]), // from 配置来源，to 配置目标路径
         // new WebpackParallelUglifyPlugin({ // 不支持ES6 暂时关闭
         //     uglifyJS: {
         //         output: {
@@ -43,4 +46,4 @@ const prodConfig = {
     ],
 }
 
-module.exports = merge(baseConfig, prodConfig); //将线上配置和公共配置做结合
+module.exports = merge(baseConfig, prodConfig) //将线上配置和公共配置做结合

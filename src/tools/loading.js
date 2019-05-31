@@ -1,4 +1,4 @@
-import loadimg from '@/assets/images/Loading.png';
+import loadimg from '@/assets/images/Loading.png'
 
 const loading = {
     element() {
@@ -7,13 +7,15 @@ const loading = {
             </div>`
     },
     start(el) {
-        $(el || 'body').css('position', 'relative');
-        $(el || 'body').append($(this.element()));
+        $(el || 'body').css('position', 'relative')
+        $(el || 'body').append($(this.element()))
     },
     stop(el) {
-        $(el || 'body').css('position', 'unset');
-        $(el || 'body').find('.loading-container').remove();
-    }
-};
+        $(el || 'body').css('position', 'unset')
+        $(el || 'body')
+            .find('.loading-container')
+            .remove()
+    },
+}
 
-export default loading;
+export default loading

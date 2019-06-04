@@ -50,7 +50,8 @@ const devConfig = {
         }), // 控制台输出
     ],
     devServer: Object.assign(server, {
-        host: '0.0.0.0',
+        open: false, // 是否自动打开浏览器
+        host: ip.address(),
         quiet: true, // 清空控制台输出
         inline: true, // 浏览器刷新
         noInfo: true, // 隐藏输出
@@ -59,7 +60,8 @@ const devConfig = {
             errors: true,
             warnings: true,
         },
-        historyApiFallback: true,
+        historyApiFallback: true, // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
+        watchContentBase: true, // 监听 contentBase 中的文件改动
         contentBase: path.join(__dirname, '../frameUI'), // 配置开发服务运行时的文件根目录
         watchOptions: { poll: 1000, aggregateTimeout: 500, ignored: /node_modules/ },
     }),

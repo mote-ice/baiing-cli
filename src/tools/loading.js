@@ -1,10 +1,12 @@
-import loadimg from '@/assets/images/Loading.png'
+import image from '@/assets/images/Loading.png'
 
 const loading = {
     element() {
-        return `<div class="loading-container">
-            <img class="rotate" src="${loadimg}">
-            </div>`
+        return `
+            <div class="loading-container">
+                <img class="rotate" src="${image}">
+            </div>
+            `
     },
     start(el) {
         $(el || 'body').css('position', 'relative')
@@ -15,7 +17,7 @@ const loading = {
         $(el || 'body')
             .find('.loading-container')
             .remove()
-    },
+    }
 }
 
 export default loading

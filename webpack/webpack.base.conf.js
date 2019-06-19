@@ -45,7 +45,6 @@ module.exports = {
         // 代码模块路径解析的配置
         modules: [
             // 构建依赖查找路径
-            path.resolve(__dirname, '../frameUI'),
             path.resolve(__dirname, '../node_modules'),
         ],
         extensions: ['.js', '.json', '.html', '.scss', '.less', '.css'], // 匹配后缀的优先级

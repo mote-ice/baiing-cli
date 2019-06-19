@@ -41,6 +41,7 @@ const devConfig = {
         new webpack.NamedModulesPlugin(), // 用于启动 HMR 时可以显示模块的相对路径
         new FriendlyErrorsWebpackPlugin({
             compilationSuccessInfo: {
+                notes: ['编译成功!'],
                 messages: [
                     '启动应用:',
                     `- Local: ${server.https ? 'https' : 'http'}://localhost:${server.port}`,

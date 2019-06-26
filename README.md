@@ -6,7 +6,7 @@
 
 [![Image NPM](src/assets/images/yarn.svg)](<(https://yarn.bootcss.com)>)或者 [![Image NPM](src/assets/images/npm.svg)](https://www.npmjs.com)
 
-## 运行步骤
+## 项目启动
 
 1. 安装依赖
 

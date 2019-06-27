@@ -39,30 +39,36 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
+
     body {
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
         background-color: $default-color;
+
         * {
             text-align: center;
             box-sizing: border-box;
             transition: all .4s ease;
         }
+
         a {
             color: $title-text-color;
             text-decoration: none;
         }
+
         ul {
             margin: 0;
             padding: 0;
             list-style: none;
             text-align: left;
+
             li {
                 display: inline-block;
             }
         }
+
         button {
             outline: none;
             padding: $box-distance;
@@ -73,26 +79,32 @@ html {
             background-color: #fff;
             box-shadow: box-shadow(rgba(0, 0, 0, .18));
         }
+
         header,
         footer {
             position: fixed;
             left: 0;
             right: 0;
         }
+
         header {
             top: 0;
             width: 100%;
             height: auto;
             background-color: #fff;
             box-shadow: box-shadow(rgba(0, 0, 0, .18));
+
             .menu-container {
                 font-size: 16px;
                 padding: $box-distance-l;
+
                 .menu-item {
                     padding: 0 $distance-l;
                 }
+
                 .active {
                     position: relative;
+
                     &::after {
                         position: absolute;
                         left: $distance-l;
@@ -103,48 +115,56 @@ html {
 
                         content: '';
                     }
+
                     a {
                         color: $info-color;
                     }
                 }
             }
         }
+
         footer {
             width: 100%;
             height: auto;
             bottom: 0;
             background-color: #fff;
             box-shadow: box-shadow(rgba(0, 0, 0, .18));
+
             p {
                 margin: 0;
                 line-height: 30px;
                 text-align: center;
             }
         }
+
         .button-info {
             color: #fff;
             border: 1px solid $info-color;
             background-color: $info-color;
             box-shadow: box-shadow($info-color);
         }
+
         .button-error {
             color: #fff;
             border: 1px solid $error-color;
             background-color: $error-color;
             box-shadow: box-shadow($error-color);
         }
+
         .button-success {
             color: #fff;
             border: 1px solid $success-color;
             background-color: $success-color;
             box-shadow: box-shadow($success-color);
         }
+
         .button-warning {
             color: #fff;
             border: 1px solid $warning-color;
             background-color: $warning-color;
             box-shadow: box-shadow($warning-color) !important;
         }
+
         .loading-container {
             position: absolute;
             display: flex;
@@ -155,28 +175,51 @@ html {
             right: 0;
             bottom: 0;
             padding: 8px;
-            background-color: rgba(0, 0, 0, .1);
+            cursor: wait;
+            background-color: rgba(131, 151, 172, 0.2);
             box-shadow: box-shadow(rgba(0, 0, 0, .18));
-            .rotate {
-                height: 100%;
-                max-width: 60px;
-                max-height: 60px;
-                min-height: 30px;
-                text-align: center;
-                animation: rotating 1s linear 0s infinite normal;
+
+            .loading-content {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                justify-items: center;
+                align-items: center;
+
+                .loading-item {
+                    width: 100%;
+                    height: 100%;
+                    background-color: $info-color;
+                    animation: fade 1s alternate ease-in-out infinite;
+                }
+
+                .loading-item:nth-of-type(2),
+                .loading-item:nth-of-type(4) {
+                    animation-delay: 0.25s;
+                }
+
+                .loading-item:nth-of-type(3),
+                .loading-item:nth-of-type(5),
+                .loading-item:nth-of-type(7) {
+                    animation-delay: 0.5s;
+                }
+
+                .loading-item:nth-of-type(6),
+                .loading-item:nth-of-type(8) {
+                    animation-delay: 0.75s;
+                }
+
+                .loading-item:nth-of-type(9) {
+                    animation-delay: 1s;
+                }
             }
         }
     }
 }
 
-@keyframes rotating {
-    from {
-        transform: rotate(0deg) scale3d(1, 1, 1);
-    }
-    50% {
-        transform: rotate(180deg) scale3d(.72, .72, .72);
-    }
+
+@keyframes fade {
     to {
-        transform: rotate(360deg) scale3d(1, 1, 1);
+        opacity: 0;
     }
 }

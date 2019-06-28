@@ -7,7 +7,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const server = {
     // 开发服务器配置
-    port: 10000,
+    port: 20000,
     https: false,
     proxy: {
         // 配置跨域代理
@@ -63,7 +63,7 @@ const devConfig = {
         },
         historyApiFallback: true, // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
         watchContentBase: true, // 监听 contentBase 中的文件改动
-        contentBase: path.join(__dirname, '../frameUI'), // 配置开发服务运行时的文件根目录
+        contentBase: path.join(__dirname, '../public'), // 配置开发服务运行时的文件根目录
         watchOptions: { poll: 1000, aggregateTimeout: 500, ignored: /node_modules/ },
     }),
 }

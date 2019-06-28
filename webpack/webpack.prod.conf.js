@@ -22,7 +22,7 @@ const prodConfig = {
         new CleanWebpackPlugin(), // 打包前清理旧的编译
         new CopyWebpackPlugin([
             {
-                from: path.resolve(__dirname, '../frameUI/'),
+                from: path.resolve(__dirname, '../public/'),
                 to: path.resolve(__dirname, '../build/'),
                 toType: 'dir',
             },

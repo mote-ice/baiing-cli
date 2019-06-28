@@ -30,8 +30,8 @@ const htmlFiles = function() {
                 hash: true,
                 chunks: [name],
                 filename: `${name}.html`, // 配置输出文件名和路径
-                template: `!!ejs-webpack-loader!src/views/${name}/index.html`, // 配置文件模板
-            }),
+                template: `!!ejs-webpack-loader!src/views/${name}/index.html` // 配置文件模板
+            })
         )
     })
 
@@ -45,14 +45,15 @@ module.exports = {
         // 代码模块路径解析的配置
         modules: [
             // 构建依赖查找路径
-            path.resolve(__dirname, '../node_modules'),
+            path.resolve(__dirname, '../public'),
+            path.resolve(__dirname, '../node_modules')
         ],
         extensions: ['.js', '.json', '.html', '.scss', '.less', '.css'], // 匹配后缀的优先级
         alias: {
             // 配置路径别名
-            '@': path.resolve(__dirname, '../src'),
+            '@': path.resolve(__dirname, '../src')
         },
-        mainFiles: ['index', 'main'], // 启动入口文件名
+        mainFiles: ['index', 'main'] // 启动入口文件名
     },
     module: {
         // 配置模块,主要用来配置不同文件的加载器
@@ -60,7 +61,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/, //不需要对第三方模块进行转换，耗费性能
-                use: { loader: 'babel-loader' }, // 使用 babel-loader
+                use: { loader: 'babel-loader' } // 使用 babel-loader
             },
             /**
              * 加载样式CSS文件
@@ -80,12 +81,10 @@ module.exports = {
                         // css分离写法
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [
-                                require('autoprefixer')(),
-                            ],
-                        },
-                    },
-                ],
+                            plugins: [require('autoprefixer')()]
+                        }
+                    }
+                ]
             },
             {
                 test: /\.scss$/,
@@ -96,51 +95,49 @@ module.exports = {
                         // css分离写法
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [
-                                require('autoprefixer')(),
-                            ],
-                        },
+                            plugins: [require('autoprefixer')()]
+                        }
                     },
-                    'sass-loader',
-                ],
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.html$/,
                 use: [
                     {
                         loader: 'html-loader',
-                        options: { minimize: true },
-                    },
-                ],
+                        options: { minimize: true }
+                    }
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif|svg|icon)(\?.*)?$/,
                 use: [
                     {
                         loader: 'url-loader',
-                        options: { limit: 10000, name: 'images/[name].[contenthash:4].[ext]' },
-                    },
-                ],
+                        options: { limit: 10000, name: 'images/[name].[contenthash:4].[ext]' }
+                    }
+                ]
             },
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 use: [
                     {
                         loader: 'url-loader',
-                        options: { limit: 10000, name: 'medias/[name].[contenthash:4].[ext]' },
-                    },
-                ],
+                        options: { limit: 10000, name: 'medias/[name].[contenthash:4].[ext]' }
+                    }
+                ]
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 use: [
                     {
                         loader: 'url-loader',
-                        options: { limit: 10000, name: 'fonts/[name].[contenthash:4].[ext]' },
-                    },
-                ],
-            },
-        ],
+                        options: { limit: 10000, name: 'fonts/[name].[contenthash:4].[ext]' }
+                    }
+                ]
+            }
+        ]
     },
     node: {
         // 阻止 webpack 注入无用的 setImmediate polyfill.
@@ -149,7 +146,7 @@ module.exports = {
         tls: 'empty',
         dgram: 'empty',
         setImmediate: false,
-        child_process: 'empty',
+        child_process: 'empty'
     },
     plugins: [
         new webpack.ProvidePlugin({
@@ -157,16 +154,16 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             jquery: 'jquery',
-            'window.jQuery': 'jquery',
+            'window.jQuery': 'jquery'
         }),
         new webpack.ProvidePlugin({
             // 引用某些模块作为应用运行时的变量
-            identifier: ['module', 'property'],
+            identifier: ['module', 'property']
         }),
         new MiniCssExtractPlugin({
             // 将css分离出去
             filename: 'styles/[name].[contenthash:4].css',
-            chunkFilename: '[id].[contenthash:4].css',
-        }),
-    ].concat(htmlFiles()),
+            chunkFilename: '[id].[contenthash:4].css'
+        })
+    ].concat(htmlFiles())
 }

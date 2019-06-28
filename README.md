@@ -31,7 +31,7 @@
 ```shell
 .
 ├── README.md【帮助文档】
-├── frameUI【存放项目静态UI框架】
+├── public【存放项目静态UI框架】
 │   ├── favicon.ico
 │   └── test.css
 ├── package.json

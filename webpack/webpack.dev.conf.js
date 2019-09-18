@@ -7,16 +7,16 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const server = {
     // 开发服务器配置
-    port: 20000,
+    port: 8080,
     https: false,
     proxy: {
         // 配置跨域代理
         '/api': {
             changeOrigin: true,
             pathRewrite: { '^/api': '/api' },
-            target: 'http://zccx.qdmqfw.com',
-        },
-    },
+            target: ''
+        }
+    }
 }
 
 const devConfig = {
@@ -35,7 +35,7 @@ const devConfig = {
     devtool: 'cheap-module-eval-source-map',
     optimization: {
         // 在开发环境中加，生产环境不加
-        usedExports: true,
+        usedExports: true
     },
     plugins: [
         new webpack.NamedModulesPlugin(), // 用于启动 HMR 时可以显示模块的相对路径
@@ -45,12 +45,13 @@ const devConfig = {
                 messages: [
                     '启动应用:',
                     `- Local: ${server.https ? 'https' : 'http'}://localhost:${server.port}`,
-                    `- Network: ${server.https ? 'https' : 'http'}://${ip.address()}:${server.port}`,
-                ],
-            },
-        }), // 控制台输出
+                    `- Network: ${server.https ? 'https' : 'http'}://${ip.address()}:${server.port}`
+                ]
+            }
+        }) // 控制台输出
     ],
     devServer: Object.assign(server, {
+        noInfo: true,
         open: false, // 是否自动打开浏览器
         host: ip.address(),
         quiet: true, // 清空控制台输出
@@ -59,13 +60,13 @@ const devConfig = {
         overlay: {
             // 错误以及警告全屏覆盖
             errors: true,
-            warnings: true,
+            warnings: true
         },
         historyApiFallback: true, // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
         watchContentBase: true, // 监听 contentBase 中的文件改动
         contentBase: path.join(__dirname, '../public'), // 配置开发服务运行时的文件根目录
-        watchOptions: { poll: 1000, aggregateTimeout: 500, ignored: /node_modules/ },
-    }),
+        watchOptions: { poll: 1000, aggregateTimeout: 500, ignored: /node_modules/ }
+    })
 }
 
 module.exports = merge(baseConfig, devConfig) //将开发配置和公共配置合并

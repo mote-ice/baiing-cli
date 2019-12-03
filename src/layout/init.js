@@ -1,3 +1,4 @@
+import $ from 'jquery'
 /**
  * [初始化页面布局以及菜单]
  * @return {[type]} [description]

@@ -1,46 +1,9 @@
-const glob = require('glob')
 const path = require('path')
 const webpack = require('webpack')
 const WebpackBar = require('webpackbar')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const mainFiles = function() {
-    let result = {}
-    glob.sync(path.resolve(__dirname, '../src/views/*/')).forEach((item, index) => {
-        // statements
-        let muster = item.split('/'),
-            name = muster[muster.length - 1]
-        result[name] = path.resolve(
-            __dirname,
-            `../src/views/${name}/index.${name.includes('-ts') ? 'ts' : 'js'}`
-        )
-    })
-
-    return result
-}
-
-const htmlFiles = function() {
-    let result = []
-    glob.sync(path.resolve(__dirname, '../src/views/*/')).forEach((item, index) => {
-        // statements
-        let muster = item.split('/'),
-            name = muster[muster.length - 1]
-
-        result.push(
-            new HtmlWebpackPlugin({
-                title: 'WEBPACK多页应用脚手架',
-                inject: true,
-                hash: true,
-                chunks: ['common', name],
-                filename: `${name}.html`, // 配置输出文件名和路径
-                template: `!!ejs-webpack-loader!src/views/${name}/index.html` // 配置文件模板
-            })
-        )
-    })
-
-    return result
-}
+const { mainFiles, htmlFiles } = require('./common')
 
 module.exports = {
     entry: mainFiles(),
@@ -59,21 +22,36 @@ module.exports = {
         },
         mainFiles: ['index', 'main'] // 启动入口文件名
     },
+    stats: 'errors-only', // 输出信息
     module: {
         // 配置模块,主要用来配置不同文件的加载器
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/, //不需要对第三方模块进行转换，耗费性能
-                use: {
-                    loader: 'babel-loader'
-                } // 使用 babel-loader
+                test: /\.(tsx|ts)$/,
+                enforce: 'pre', // 编译前检查
+                exclude: /node_modules/, // 不检测的文件
+                include: [path.resolve(__dirname, '../', 'src')], // 指定检查的目录
+                use: [
+                    { loader: 'babel-loader' }, // Tsc编译后，再用babel处理
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true, // 加快编译速度
+                            configFile: path.resolve(__dirname, '../tsconfig.json') // 指定特定的ts编译配置，为了区分脚本的ts配置
+                        }
+                    }
+                ]
             },
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
+                test: /\.(jsx|js)$/,
+                enforce: 'pre', // 编译前检查
+                exclude: /node_modules/, // 不检测的文件
+                include: [path.resolve(__dirname, '../', 'src')], // 指定检查的目录
+                use: [
+                    { loader: 'babel-loader' } // 使用 babel-loader
+                ]
             },
+
             /**
              * 加载样式CSS文件
              * loader从右向左,从下到上;
@@ -89,11 +67,9 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
-                        // css分离写法
+                        // Css分离写法
                         loader: 'postcss-loader',
-                        options: {
-                            plugins: [require('autoprefixer')()]
-                        }
+                        options: { plugins: [require('autoprefixer')()] }
                     }
                 ]
             },
@@ -103,11 +79,9 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
-                        // css分离写法
+                        // Css分离写法
                         loader: 'postcss-loader',
-                        options: {
-                            plugins: [require('autoprefixer')()]
-                        }
+                        options: { plugins: [require('autoprefixer')()] }
                     },
                     'sass-loader'
                 ]
@@ -117,9 +91,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'html-loader',
-                        options: {
-                            minimize: true
-                        }
+                        options: { minimize: true }
                     }
                 ]
             },
@@ -130,6 +102,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 10000,
+                            esModule: false,
                             name: 'images/[name].[contenthash:4].[ext]'
                         }
                     }
@@ -142,6 +115,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 10000,
+                            esModule: false,
                             name: 'medias/[name].[contenthash:4].[ext]'
                         }
                     }
@@ -154,6 +128,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 10000,
+                            esModule: false,
                             name: 'fonts/[name].[contenthash:4].[ext]'
                         }
                     }
@@ -171,13 +146,6 @@ module.exports = {
         child_process: 'empty'
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            // 全局引入jquery
-            $: 'jquery',
-            jQuery: 'jquery',
-            jquery: 'jquery',
-            'window.jQuery': 'jquery'
-        }),
         new webpack.ProvidePlugin({
             // 引用某些模块作为应用运行时的变量
             identifier: ['module', 'property']

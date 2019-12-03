@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 const loading = {
     element(size) {
         return `

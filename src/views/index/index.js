@@ -1,4 +1,5 @@
 import './style.scss'
+import $ from 'jquery'
 import 'jquery.cookie'
 import '@/layout/init'
 
